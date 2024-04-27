@@ -135,8 +135,6 @@ var objeto = new Metodos();
 
 //Console.ReadKey();
 
-var alunos = new List<Aluno>();
-
 string Input(string message)
 {
     Console.WriteLine(message);
@@ -155,6 +153,8 @@ while (true)
     Console.WriteLine("4 - Buscar na lista");
     Console.WriteLine("5 - Cadastrar Aluno");
     Console.WriteLine("6 - Listar alunos");
+    Console.WriteLine("7 - Buscar alunos");
+    Console.WriteLine("8 - Excluir aluno");
     Console.WriteLine("0 - Sair");
     var inputValido =
         int.TryParse(Console.ReadLine(),
@@ -226,7 +226,7 @@ while (true)
                     ),
                     Codigo = codigo++
                 };
-                alunos.Add(novoAluno);
+                AlunoService.CriarAluno(novoAluno);
             }
             else
             {
@@ -243,13 +243,44 @@ while (true)
                     ),
                     Codigo = codigo++
                 };
-                alunos.Add(novoAluno);
+                AlunoService.CriarAluno(novoAluno);
             }
             break;
         case 6:
-            foreach (var aluno in alunos)
+            foreach (var aluno in AlunoService.Listar())
             {
                 aluno.PrintDados();
+            }
+            break;
+        case 7:
+            var buscaAluno = Input("Digite a busca: ");
+            foreach (var aluno in AlunoService.Listar(buscaAluno))
+            {
+                aluno.PrintDados();
+            }
+            break;
+        case 8:
+            try
+            {
+                var codigoAluno = int.Parse(Input(
+                        "Digite o codigo do aluno:"));
+                var removido = AlunoService.Remover(codigoAluno);
+                if (removido != null)
+                {
+                    removido.PrintDados();
+                }
+            }
+            catch (StackOverflowException e)
+            {
+                Console.WriteLine("Stack overflow");
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Digite um codigo valido");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
             break;
         default:
