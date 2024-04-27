@@ -55,11 +55,11 @@ while (z < 15)
     z++;
 }
 
-var v = 0;
+var v = 1;
 do
 {
-    var texto = Console.ReadLine();
-    v = int.Parse(texto);
+    //var texto = Console.ReadLine();
+    //v = int.Parse(texto);
 } while (v % 2 == 0);
 
 Console.WriteLine("Digitou: " + v);
@@ -93,15 +93,57 @@ Console.WriteLine(meioDia);
 
 // def isPar(numero):
 
-var t = int.Parse(Console.ReadLine());
+//var t = int.Parse(Console.ReadLine());
 
 //Metodos.IsPar(t);
+
 
 var objeto = new Metodos();
 //var objeto2 = new Metodos();
 //var objeto3 = new Metodos();
 
 //objeto.PrintarLista(lista);
+
+//var a1 = new Aluno
+//{
+//    Nome = "Rodrigo",
+//    DataNascimento = new DateTime(2000, 1, 1),
+//    Codigo = 1001
+//};
+//// chamando set
+//a1.Email = "Rodrigo@GMail.com";
+////chamando o get
+//Console.WriteLine("Email: {0}", a1.Email);
+
+//var a2 = new Aluno();
+
+//Console.WriteLine("ALUNO 1: {0}", a1.Nome);
+//Console.WriteLine("ALUNO 2: {0}", a2.Nome);
+
+//Aluno a3 = null;
+
+//var b1 = new Bolsista
+//{
+//    Nome = "Bolsista 1",
+//    Codigo = 1002,
+//    Desconto = 0.5
+//};
+
+//a3 = new Bolsista();
+
+//Console.WriteLine("ALUNO 3: {0}", a3?.Nome);
+
+//Console.ReadKey();
+
+var alunos = new List<Aluno>();
+
+string Input(string message)
+{
+    Console.WriteLine(message);
+    return Console.ReadLine();
+}
+
+int codigo = 1000;
 
 while (true)
 {
@@ -111,9 +153,11 @@ while (true)
     Console.WriteLine("2 - Adicionar item lista");
     Console.WriteLine("3 - Printar lista");
     Console.WriteLine("4 - Buscar na lista");
+    Console.WriteLine("5 - Cadastrar Aluno");
+    Console.WriteLine("6 - Listar alunos");
     Console.WriteLine("0 - Sair");
-    var inputValido = 
-        int.TryParse(Console.ReadLine(), 
+    var inputValido =
+        int.TryParse(Console.ReadLine(),
         out int opcao);
 
     if (!inputValido)
@@ -128,7 +172,7 @@ while (true)
     {
         break;
     }
-    
+
     switch (opcao)
     {
         case 1:
@@ -148,14 +192,14 @@ while (true)
             Console.WriteLine("Digite a busca: ");
             var busca = Console.ReadLine();
             // lambda function
-            var helloWorld = () => 
+            var helloWorld = () =>
             Console.WriteLine("Hello World!");
             helloWorld();
             // LINQ - Language Integrated Query
             // LINQ Metodico
-     
+
             var resultado = lista
-                .Where(x => x.Contains(busca, 
+                .Where(x => x.Contains(busca,
                                 StringComparison.OrdinalIgnoreCase)
                 )
                 .OrderByDescending(x => x)
@@ -167,6 +211,46 @@ while (true)
                             orderby a descending
                             select a;
             objeto.PrintarLista(resultado);
+            break;
+        case 5:
+            var resposta = Input("Aluno bolsista?");
+            if (resposta != "S")
+            {
+                var novoAluno = new Aluno
+                {
+                    Nome = Input("Digite o nome do aluno: "),
+                    Email = Input("Digite o email do aluno: "),
+                    DataNascimento =
+                    DateTime.Parse(
+                        Input("Digite a data de nascimento: ")
+                    ),
+                    Codigo = codigo++
+                };
+                alunos.Add(novoAluno);
+            }
+            else
+            {
+                var novoAluno = new Bolsista
+                {
+                    Nome = Input("Digite o nome do aluno: "),
+                    Email = Input("Digite o email do aluno: "),
+                    DataNascimento =
+                    DateTime.Parse(
+                        Input("Digite a data de nascimento: ")
+                    ),
+                    Desconto = double.Parse(
+                        Input("Porcentagem de desconto: ")
+                    ),
+                    Codigo = codigo++
+                };
+                alunos.Add(novoAluno);
+            }
+            break;
+        case 6:
+            foreach (var aluno in alunos)
+            {
+                aluno.PrintDados();
+            }
             break;
         default:
             Console.WriteLine("Opção inválida");
