@@ -226,7 +226,7 @@ while (true)
                     ),
                     Codigo = codigo++
                 };
-                AlunoService.CriarAluno(novoAluno);
+                AlunoService.CriarAluno(novoAluno, out _);
             }
             else
             {
@@ -243,7 +243,7 @@ while (true)
                     ),
                     Codigo = codigo++
                 };
-                AlunoService.CriarAluno(novoAluno);
+                AlunoService.CriarAluno(novoAluno, out _);
             }
             break;
         case 6:

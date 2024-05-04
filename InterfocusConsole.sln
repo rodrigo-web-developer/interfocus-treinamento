@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfocusConsole", "InterfocusConsole\InterfocusConsole.csproj", "{EAC11D7D-38BC-48FD-AB82-AF6B6F2700D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfocusConsole", "InterfocusConsole\InterfocusConsole.csproj", "{EAC11D7D-38BC-48FD-AB82-AF6B6F2700D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escola.Api", "Escola.Api\Escola.Api.csproj", "{2A8EB6B6-E369-4831-8AD1-C4C1E587495E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EAC11D7D-38BC-48FD-AB82-AF6B6F2700D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAC11D7D-38BC-48FD-AB82-AF6B6F2700D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAC11D7D-38BC-48FD-AB82-AF6B6F2700D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8EB6B6-E369-4831-8AD1-C4C1E587495E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8EB6B6-E369-4831-8AD1-C4C1E587495E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8EB6B6-E369-4831-8AD1-C4C1E587495E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8EB6B6-E369-4831-8AD1-C4C1E587495E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
