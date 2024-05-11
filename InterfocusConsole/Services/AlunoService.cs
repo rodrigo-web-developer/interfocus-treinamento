@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using InterfocusConsole.Entidades;
 
-namespace InterfocusConsole
+namespace InterfocusConsole.Services
 {
     public class AlunoService
     {
@@ -13,7 +14,7 @@ namespace InterfocusConsole
             new Aluno { Nome = "Maria josé", Codigo = 4, DataNascimento = new DateTime(1998,1,1), Email = "maria@email.com" },
         };
 
-        
+
         public static bool Validacao(Aluno aluno,
             out List<ValidationResult> erros)
         {

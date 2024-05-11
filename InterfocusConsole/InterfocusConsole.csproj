@@ -7,4 +7,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="hibernate.cfg.xml" />
+    <None Remove="Mappings\Curso.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Curso.hbm.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="5.5.1" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="InterfocusConsole"
+                   namespace="InterfocusConsole.Entidades">
+
+	<class name="Curso" table="cursos">
+		<id name="Id" type="int">
+			<generator class="sequence" >
+				<param name="sequence">cursos_seq</param>
+			</generator>
+		</id>
+		<property name="Nome"		type="string"	length="50"		/>
+		<property name="Descricao"  type="string"	length="5000"	/>
+		<property name="Nivel"		not-null="true"					/>
+		<property name="Duracao"	type="int"		not-null="true"	/>
+		
+	</class>
+
+</hibernate-mapping>

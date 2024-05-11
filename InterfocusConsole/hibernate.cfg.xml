@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+	<session-factory>
+		<property name="dialect">NHibernate.Dialect.PostgreSQLDialect</property>
+		<property name="connection.driver_class">NHibernate.Driver.NpgsqlDriver</property>
+		<property name="connection.connection_string">
+			Server=172.16.102.202;Port=5432;Database=rodrigo;User Id=postgres;Password=123123a;
+		</property>
+
+		<property name="show_sql">true</property>
+		<mapping assembly="InterfocusConsole"></mapping>
+	</session-factory>
+</hibernate-configuration>

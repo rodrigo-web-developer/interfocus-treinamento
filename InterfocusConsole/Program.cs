@@ -2,6 +2,8 @@
 
 // import 
 using InterfocusConsole;
+using InterfocusConsole.Entidades;
+using InterfocusConsole.Services;
 using System.Threading.Channels;
 
 Console.WriteLine("Hello, World!");

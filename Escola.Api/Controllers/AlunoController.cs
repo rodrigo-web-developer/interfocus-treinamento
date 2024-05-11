@@ -1,4 +1,5 @@
-﻿using InterfocusConsole;
+﻿using InterfocusConsole.Entidades;
+using InterfocusConsole.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
