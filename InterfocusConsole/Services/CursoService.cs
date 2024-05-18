@@ -44,10 +44,55 @@ namespace InterfocusConsole.Services
             return false;
         }
 
+        public bool Editar(Curso curso, out List<ValidationResult> erros)
+        {
+            if (Validacao(curso, out erros))
+            {
+                using var sessao = session.OpenSession();
+                using var transaction = sessao.BeginTransaction();
+                sessao.Merge(curso);
+                transaction.Commit();
+                return true;
+            }
+            return false;
+        }
+
+        public bool Excluir(int id, out List<ValidationResult> erros)
+        {
+            erros = new List<ValidationResult>();
+            using var sessao = session.OpenSession();
+            using var transaction = sessao.BeginTransaction();
+            var curso = sessao.Query<Curso>()
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
+            if (curso == null)
+            {
+                erros.Add(new ValidationResult("Registro não encontrado",
+                    new[] { "id" }));
+                return false;
+            }
+
+            sessao.Delete(curso);
+            transaction.Commit();
+            return true;
+        }
+
         public virtual List<Curso> Listar()
         {
             using var sessao = session.OpenSession();
             var cursos = sessao.Query<Curso>().ToList();
+            return cursos;
+        }
+
+        public virtual List<Curso> Listar(string busca)
+        {
+            using var sessao = session.OpenSession();
+            var cursos = sessao.Query<Curso>()
+                .Where(c => c.Nome.Contains(busca) ||
+                            c.Descricao.Contains(busca))
+                .OrderBy(c => c.Id)
+                .Take(4)
+                .ToList();
             return cursos;
         }
     }

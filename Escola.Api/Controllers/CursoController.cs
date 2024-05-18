@@ -17,9 +17,11 @@ namespace Escola.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCursos()
+        public IActionResult GetCursos(string busca = null)
         {
-            var dados = service.Listar();
+            var dados = busca == null ? 
+                            service.Listar() :
+                            service.Listar(busca);
             return Ok(dados);
         }
 
@@ -28,6 +30,21 @@ namespace Escola.Api.Controllers
         {
             var valido = service.Criar(curso, out List<ValidationResult> erros);
             return valido ? Ok(curso) : UnprocessableEntity(erros);
+        }
+
+
+        [HttpPut]
+        public IActionResult Put([FromBody] Curso curso)
+        {
+            var valido = service.Editar(curso, out List<ValidationResult> erros);
+            return valido ? Ok(curso) : UnprocessableEntity(erros);
+        }
+
+        [HttpDelete("{cursoId}")]
+        public IActionResult Delete(int cursoId)
+        {
+            var valido = service.Excluir(cursoId, out List<ValidationResult> erros);
+            return valido ? Ok(valido) : UnprocessableEntity(erros);
         }
     }
 }

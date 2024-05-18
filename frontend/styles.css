@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 900px;
+}
+
+thead {
+    color: #757575;
+    font-size: 18px;
+}
+
+thead th {
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-right: 8px;
+}
+
+thead > tr {
+    background-color: aqua;
+}
+
+tbody tr {
+    background-color: aquamarine;
+}
+
+tbody tr:hover {
+    background-color: #57b797;
+    cursor: pointer;
+}
+
+tbody td {
+    padding: 4px;
+}
+
+a.crud {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    background-color: #AABBCC;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: padding 1s;
+    overflow: hidden;
+}
+
+a.crud:hover {
+    background-color: #CCCCCC;
+    border-width: 2px;
+    padding: 16px;
+    transition: padding 2s;
+}
+
+/*
+SELECTOR {
+    ATRIBUTO: VALOR;
+}
+
+*/
