@@ -42,5 +42,12 @@ namespace InterfocusConsole.Services
             }
             return false;
         }
+
+        public List<Curso> Listar()
+        {
+            using var sessao = session.OpenSession();
+            var cursos = sessao.Query<Curso>().ToList();
+            return cursos;
+        }
     }
 }
