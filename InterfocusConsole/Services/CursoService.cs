@@ -38,16 +38,30 @@ namespace InterfocusConsole.Services
                 using var sessao = session.OpenSession();
                 using var transaction = sessao.BeginTransaction();
                 sessao.Save(curso);
+                transaction.Commit();
                 return true;
             }
             return false;
         }
 
-        public List<Curso> Listar()
+        public virtual List<Curso> Listar()
         {
             using var sessao = session.OpenSession();
             var cursos = sessao.Query<Curso>().ToList();
             return cursos;
+        }
+    }
+
+
+    public class CursoService2 : CursoService
+    {
+        public CursoService2(ISessionFactory session) : base(session)
+        {
+        }
+
+        public override List<Curso> Listar()
+        {
+            return base.Listar();
         }
     }
 }

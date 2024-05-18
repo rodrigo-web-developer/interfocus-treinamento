@@ -1,3 +1,4 @@
+using InterfocusConsole.Services;
 using NHibernate;
 using NHibernate.Cfg;
 
@@ -13,6 +14,16 @@ builder.Services.AddSingleton<ISessionFactory>((s) =>
     config.Configure();
     return config.BuildSessionFactory();
 });
+
+if (true)
+{
+    // configura SQL SERVER
+}
+else
+{
+    // configura postgres
+}
+builder.Services.AddTransient<CursoService>();
 
 var app = builder.Build();
 
