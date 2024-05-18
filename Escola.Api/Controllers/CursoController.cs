@@ -1,25 +1,33 @@
 ﻿using InterfocusConsole.Entidades;
+using InterfocusConsole.Services;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
+using System.ComponentModel.DataAnnotations;
 
 namespace Escola.Api.Controllers
 {
     [Route("api/[controller]")]
     public class CursoController : ControllerBase
     {
-        private readonly ISessionFactory session;
+        private readonly CursoService service;
 
-        public CursoController(ISessionFactory session)
+        public CursoController(CursoService service)
         {
-            this.session = session;
+            this.service = service;
         }
 
         [HttpGet]
         public IActionResult GetCursos()
         {
-            using var dados = session.OpenSession();
-            var cursos = dados.Query<Curso>().ToList();
-            return Ok(cursos);
+            var dados = service.Listar();
+            return Ok(dados);
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Curso curso)
+        {
+            var valido = service.Criar(curso, out List<ValidationResult> erros);
+            return valido ? Ok(curso) : UnprocessableEntity(erros);
         }
     }
 }
