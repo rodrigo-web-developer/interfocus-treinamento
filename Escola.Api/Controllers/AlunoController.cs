@@ -9,15 +9,20 @@ namespace Escola.Api.Controllers
     [Route("api/[controller]")]
     public class AlunoController : ControllerBase
     {
+        private readonly AlunoService alunoService;
+
+        public AlunoController(AlunoService alunoService)
+        {
+            this.alunoService = alunoService;
+        }
+
         [HttpGet]
-        public IActionResult Listar(string pesquisa, 
-            int skip = 0, 
-            int pageSize = 0)
+        public IActionResult Listar(string pesquisa)
         {
             // ternário
             var alunos = string.IsNullOrEmpty(pesquisa) ?
-                AlunoService.Listar() :
-                AlunoService.Listar(pesquisa, skip, pageSize);
+                alunoService.Listar() :
+                alunoService.Listar(pesquisa);
             return Ok(alunos);
         }
 
@@ -29,7 +34,7 @@ namespace Escola.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var sucesso = AlunoService.CriarAluno(aluno,
+            var sucesso = alunoService.Criar(aluno,
                 out List<ValidationResult> erros);
             if (sucesso)
             {
@@ -49,7 +54,7 @@ namespace Escola.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var sucesso = AlunoService.EditarAluno(aluno,
+            var sucesso = alunoService.Editar(aluno,
                 out List<ValidationResult> erros);
             if (sucesso)
             {
@@ -71,7 +76,7 @@ namespace Escola.Api.Controllers
         [HttpDelete("{codigo}")] // concatena com o Route
         public IActionResult Remover(int codigo)
         {
-            var aluno = AlunoService.Remover(codigo);
+            var aluno = alunoService.Excluir(codigo, out _);
             if (aluno == null)
             {
                 return NotFound();

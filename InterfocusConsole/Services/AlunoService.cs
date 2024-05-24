@@ -1,10 +1,85 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using InterfocusConsole.Entidades;
+using NHibernate;
 
 namespace InterfocusConsole.Services
 {
     public class AlunoService
     {
+
+        private readonly ISessionFactory session;
+
+        public AlunoService(ISessionFactory session)
+        {
+            this.session = session;
+        }
+
+        public bool Criar(Aluno Aluno, out List<ValidationResult> erros)
+        {
+            if (Validacao(Aluno, out erros))
+            {
+                using var sessao = session.OpenSession();
+                using var transaction = sessao.BeginTransaction();
+                sessao.Save(Aluno);
+                transaction.Commit();
+                return true;
+            }
+            return false;
+        }
+
+        public bool Editar(Aluno Aluno, out List<ValidationResult> erros)
+        {
+            if (Validacao(Aluno, out erros))
+            {
+                using var sessao = session.OpenSession();
+                using var transaction = sessao.BeginTransaction();
+                sessao.Merge(Aluno);
+                transaction.Commit();
+                return true;
+            }
+            return false;
+        }
+
+        public Aluno Excluir(int id, out List<ValidationResult> erros)
+        {
+            erros = new List<ValidationResult>();
+            using var sessao = session.OpenSession();
+            using var transaction = sessao.BeginTransaction();
+            var Aluno = sessao.Query<Aluno>()
+                .Where(c => c.Codigo == id)
+                .FirstOrDefault();
+            if (Aluno == null)
+            {
+                erros.Add(new ValidationResult("Registro não encontrado",
+                    new[] { "id" }));
+                return null;
+            }
+
+            sessao.Delete(Aluno);
+            transaction.Commit();
+            return Aluno;
+        }
+
+        public virtual List<Aluno> Listar()
+        {
+            using var sessao = session.OpenSession();
+            var Alunos = sessao.Query<Aluno>().ToList();
+            return Alunos;
+        }
+
+        public virtual List<Aluno> Listar(string busca)
+        {
+            using var sessao = session.OpenSession();
+            var Alunos = sessao.Query<Aluno>()
+                .Where(c => c.Nome.Contains(busca) ||
+                            c.Email.Contains(busca))
+                .OrderBy(c => c.Codigo)
+                .ToList();
+            return Alunos;
+        }
+
+        /* ESTÁTICO */
+
         private static int Contador = 1000;
         private static List<Aluno> Alunos = new List<Aluno>()
         {
@@ -13,7 +88,6 @@ namespace InterfocusConsole.Services
             new Aluno { Nome = "Jobiscleyson Souza", Codigo = 3, DataNascimento = new DateTime(2000,1,5), Email = "job@email.com" },
             new Aluno { Nome = "Maria josé", Codigo = 4, DataNascimento = new DateTime(1998,1,1), Email = "maria@email.com" },
         };
-
 
         public static bool Validacao(Aluno aluno,
             out List<ValidationResult> erros)
@@ -83,7 +157,7 @@ namespace InterfocusConsole.Services
             return valido;
         }
 
-        public static List<Aluno> Listar()
+        public static List<Aluno> ListarTodos()
         {
             return Alunos;
         }
@@ -116,11 +190,6 @@ namespace InterfocusConsole.Services
                         .Where(x => x.Codigo == codigo)
                         .FirstOrDefault();
             Alunos.Remove(aluno);
-            // Overflow()
-            // Overflow() ->
-            // Overflow() ->
-            // Overflow() ->
-            // Main ->
             return aluno;
         }
     }

@@ -23,6 +23,7 @@ else
 {
     // configura postgres
 }
+builder.Services.AddTransient<AlunoService>();
 builder.Services.AddTransient<CursoService>();
 
 var app = builder.Build();

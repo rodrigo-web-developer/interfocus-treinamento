@@ -249,7 +249,7 @@ while (true)
             }
             break;
         case 6:
-            foreach (var aluno in AlunoService.Listar())
+            foreach (var aluno in AlunoService.ListarTodos())
             {
                 aluno.PrintDados();
             }
