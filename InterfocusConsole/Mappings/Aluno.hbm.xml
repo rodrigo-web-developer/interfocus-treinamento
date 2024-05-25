@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="InterfocusConsole"
+                   namespace="InterfocusConsole.Entidades">
+
+	<class name="Aluno" table="alunos">
+		<id name="Codigo" type="int">
+			<generator class="sequence" >
+				<param name="sequence">alunos_seq</param>
+			</generator>
+		</id>
+		<property name="Nome"				type="string"	length="50"		/>
+		<property name="Email"				type="string"	length="50"		/>
+		<property name="DataNascimento"		type="Date"		/>
+		
+	</class>
+
+</hibernate-mapping>
