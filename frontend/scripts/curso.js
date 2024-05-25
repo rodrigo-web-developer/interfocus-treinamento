@@ -21,6 +21,12 @@ function addCurso(evento) {
         nome.innerHTML = dados.get("nome");
         descricao.innerHTML = dados.get("descricao");
         evento.target.reset();
+        evento.target
+            .querySelector("input[type=hidden]")
+            .value = "-1";
+
+        var selected = nodeTr.closest("tbody").querySelector("tr.selected");
+        selected?.classList.remove("selected");
     }
     else {
 
@@ -72,7 +78,12 @@ function addCurso(evento) {
 function selecionar(evento) {
 
     var { target } = evento;
+    var selected = target.closest("tbody").querySelector("tr.selected");
+    selected?.classList.remove("selected");
+
     var nodeTR = target.closest("tr");
+    nodeTR.classList.add("selected");
+
     // spread operator
     /*
     criar copia do array
@@ -83,6 +94,8 @@ function selecionar(evento) {
         .closest("tbody")
         .querySelectorAll("tr")
     ].indexOf(nodeTR);
+
+
 
     console.log(target, nodeTR, index);
     var [id, nome, descricao] =
