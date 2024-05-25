@@ -8,6 +8,49 @@ table {
     max-width: 900px;
 }
 
+button {
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border-style: none;
+    background-color: #757575;
+    color: white;
+    font-weight: 400;
+}
+
+button[type=submit] {
+    background-color: #1900ff;
+}
+
+button[type=submit]:active {
+    background-color: #005eff;
+}
+
+button[type=submit]:disabled {
+    background-color: #909090;
+}
+
+button:active {
+    background-color: #333333;
+    font-weight: 600;
+}
+
+input[type=text], 
+input[type=number],
+input[type=password],
+textarea {
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #909090;
+}
+
+input[type=text]:invalid, 
+input[type=number]:invalid,
+input[type=password]:invalid {
+    border: 1px solid red;
+}
+
 thead {
     color: #757575;
     font-size: 18px;
@@ -55,6 +98,15 @@ a.crud:hover {
     padding: 16px;
     transition: padding 2s;
 }
+
+div.formulario {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    gap: 8px;
+    padding-bottom: 16px;
+}
+
 
 /*
 SELECTOR {

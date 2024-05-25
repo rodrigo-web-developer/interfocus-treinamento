@@ -4,21 +4,23 @@
 <head>
     <title>Cursos</title>
     <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript" 
+        src="scripts/curso.js"></script>
 </head>
 
 <body>
     <a href="./index.html">Voltar</a>
     <h1>Cursos</h1>
-    
+
     <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Email</th>
+                <th>Descrição</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody onclick="selecionar(event)">
             <tr>
                 <td>1</td>
                 <td>TESTE</td>
@@ -29,20 +31,28 @@
                 <td>RODRIGO</td>
                 <td>rodrigo@email.com</td>
             </tr>
-            <tr>
-                <td>3</td>
-                <td>RODRIGO 3</td>
-                <td>rodrigo@email.com</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>RODRIGO 4</td>
-                <td>rodrigo@email.com</td>
-            </tr>
         </tbody>
     </table>
     <br>
-    <a class="crud" href="./cursos.html">Novo Curso</a>
+    <form onsubmit="addCurso(event)">
+        <div class="formulario">
+            <input 
+                value="PADRÃO"
+                placeholder="Nome do curso" 
+                type="text" 
+                name="nome" required>
+            <textarea 
+                placeholder="Descrição do curso" 
+                name="descricao" required></textarea>
+        
+            <input
+                name="index"
+                type="hidden"
+                value="-1">
+        </div>
+        <button 
+        type="submit">Novo Curso</button>
+    </form>
 </body>
 
 </html>

@@ -3,6 +3,7 @@
     <head>
         <title>Escola - Interfocus</title>
         <link rel="stylesheet" href="./styles.css">
+        <script type="text/javascript" src="scripts/novo.js"></script>
     </head>
     <body>
         <h1>Hello, World!</h1>
@@ -10,7 +11,15 @@
         <h2>Cabeçalho secundário</h2>
         <h3>blas,vlajsdlkasdkj</h3>
 
-        <button>CLIQUE AQUI</button>
+        
+        <form method="get" action="cursos.html" onsubmit="enviarDados(event)">
+            <input required name="texto" placeholder="Digite o nome" type="text"><br/>
+            <input required min="1" name="numero" placeholder="Digite o número" type="number"><br/>
+            <button type="submit">CLIQUE AQUI</button>
+            <button type="reset">Botão 2</button>
+            <button type="button" onclick="fazAlgumaCoisa()">Botão 3</button>
+        </form>
+
         <ul> <!-- Unordered List -->
             <li>ITEM 1 </li> <!-- List Item -->
             <li>ITEM 2 </li> <!-- List Item -->
