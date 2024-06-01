@@ -45,7 +45,7 @@ function preencherTabela() {
     })
 }
 
-function criarCurso(event){
+function criarCurso(event) {
     event.preventDefault();
     var dados = new FormData(event.target);
     var objCurso = {
@@ -56,12 +56,13 @@ function criarCurso(event){
     }
 
     postCurso(objCurso)
-    .then(resultado => {
-        if (resultado == 200){
+        .then(resultado => {
+            if (resultado == 200) {
 
-        }
-        else if (resultado == 422){
-            
-        }
-    })
+            }
+            else if (resultado == 422) {
+
+            }
+        });
+
 }

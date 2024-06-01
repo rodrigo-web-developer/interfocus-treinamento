@@ -9,9 +9,9 @@
 				<param name="sequence">alunos_seq</param>
 			</generator>
 		</id>
-		<property name="Nome"				type="string"	length="50"		/>
-		<property name="Email"				type="string"	length="50"		/>
-		<property name="DataNascimento"		type="Date"		/>
+		<property	name="Nome"				type="string"	length="50"		/>
+		<property	name="Email"			type="string"	length="50"		/>
+		<property	name="DataNascimento"	type="Date"			/>
 		
 	</class>
 

@@ -32,8 +32,8 @@
     <form onsubmit="criarCurso(event)">
         <div class="formulario">
             <div class="row">
-                <input value="PADRÃO" placeholder="Nome do curso" type="text" name="nome" required>
-                <input type="number" min="1" placeholder="Duração" name="duracao" required>
+                <input value="PADRÃO" placeholder="Nome do curso" type="text" name="nome">
+                <input type="number" min="1" placeholder="Duração" name="duracao">
             </div>
 
             <select name="nivel">
@@ -42,7 +42,7 @@
                 <option value="2">Avançado</option>
                 <option value="3">Expert</option>
             </select>
-            <textarea placeholder="Descrição do curso" name="descricao" required></textarea>
+            <textarea placeholder="Descrição do curso" name="descricao"></textarea>
             <input name="index" type="hidden" value="-1">
 
         </div>
