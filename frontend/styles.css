@@ -104,11 +104,27 @@ a.crud:hover {
 div.formulario {
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+    max-width: 450px;
     gap: 8px;
     padding-bottom: 16px;
 }
 
+div.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 16px;
+}
+
+select {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+div.row input {
+    flex: 1;
+}
 
 /*
 SELECTOR {

@@ -4,15 +4,20 @@
 <head>
     <title>Cursos</title>
     <link rel="stylesheet" href="./styles.css">
-    <script type="text/javascript" 
-        src="scripts/curso.js"></script>
+    <script type="text/javascript" src="scripts/curso.js"></script>
+    <script type="text/javascript" src="scripts/cursoApi.js"></script>
+    <script type="text/javascript">
+        setTimeout(() => {
+            preencherTabela();
+        }, 500)
+    </script>
 </head>
 
 <body>
     <a href="./index.html">Voltar</a>
     <h1>Cursos</h1>
 
-    <table>
+    <table id="table-cursos">
         <thead>
             <tr>
                 <th>ID</th>
@@ -21,37 +26,27 @@
             </tr>
         </thead>
         <tbody onclick="selecionar(event)">
-            <tr>
-                <td>1</td>
-                <td>TESTE</td>
-                <td>teste@email.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>RODRIGO</td>
-                <td>rodrigo@email.com</td>
-            </tr>
         </tbody>
     </table>
     <br>
-    <form onsubmit="addCurso(event)">
+    <form onsubmit="criarCurso(event)">
         <div class="formulario">
-            <input 
-                value="PADRÃO"
-                placeholder="Nome do curso" 
-                type="text" 
-                name="nome" required>
-            <textarea 
-                placeholder="Descrição do curso" 
-                name="descricao" required></textarea>
-        
-            <input
-                name="index"
-                type="hidden"
-                value="-1">
+            <div class="row">
+                <input value="PADRÃO" placeholder="Nome do curso" type="text" name="nome" required>
+                <input type="number" min="1" placeholder="Duração" name="duracao" required>
+            </div>
+
+            <select name="nivel">
+                <option value="0">Iniciante</option>
+                <option value="1">Intermediário</option>
+                <option value="2">Avançado</option>
+                <option value="3">Expert</option>
+            </select>
+            <textarea placeholder="Descrição do curso" name="descricao" required></textarea>
+            <input name="index" type="hidden" value="-1">
+
         </div>
-        <button 
-        type="submit">Novo Curso</button>
+        <button type="submit">Novo Curso</button>
     </form>
 </body>
 
