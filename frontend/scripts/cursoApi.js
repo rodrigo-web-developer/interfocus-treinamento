@@ -2,8 +2,6 @@ var x = 10;
 const c = "";
 let i = 10;
 
-const URL_API = "https://localhost:7236";
-
 function listarCursos() {
     // PROMISE
     var response = fetch(URL_API + "/api/curso")
@@ -13,7 +11,7 @@ function listarCursos() {
 function postCurso(curso) {
     // PROMISE
     var request = {
-        method: "POST",
+        method: curso.id ? "PUT" : "POST",
         headers: {
             "Content-Type": "application/json"
         },
@@ -45,9 +43,14 @@ function preencherTabela() {
     })
 }
 
-function criarCurso(event) {
+async function criarCurso(event) {
     event.preventDefault();
     var dados = new FormData(event.target);
+    var confirmou = await confirmar("Deseja seguir com a criação de um novo curso?");
+    if (!confirmou) {
+        return;
+    }
+    var form = event.target;
     var objCurso = {
         nome: dados.get("nome"),
         nivel: Number(dados.get("nivel")),
@@ -57,11 +60,23 @@ function criarCurso(event) {
 
     postCurso(objCurso)
         .then(resultado => {
-            if (resultado == 200) {
-
+            if (resultado.status == 200) {
+                var tabela = document
+                    .getElementById("table-cursos")
+                    .querySelector("tbody");
+                tabela.innerHTML = "";
+                preencherTabela();
             }
-            else if (resultado == 422) {
-
+            else if (resultado.status == 422) {
+                resultado.json().then(erros => {
+                    erros.forEach(erro => {
+                        const { memberNames, errorMessage } = erro;
+                        const [campo] = memberNames;
+                        const input = form.querySelector(`[name=${campo.toLowerCase()}]`);
+                        const erroMessage = input.parentNode.querySelector(".error")
+                        erroMessage.innerHTML = errorMessage;
+                    })
+                })
             }
         });
 

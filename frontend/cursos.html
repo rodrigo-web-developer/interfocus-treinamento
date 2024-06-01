@@ -4,8 +4,9 @@
 <head>
     <title>Cursos</title>
     <link rel="stylesheet" href="./styles.css">
-    <script type="text/javascript" src="scripts/curso.js"></script>
-    <script type="text/javascript" src="scripts/cursoApi.js"></script>
+    <script type="text/javascript" src="/scripts/curso.js"></script>
+    <script type="text/javascript" src="/scripts/alunoApi.js"></script>
+    <script type="text/javascript" src="/scripts/cursoApi.js"></script>
     <script type="text/javascript">
         setTimeout(() => {
             preencherTabela();
@@ -32,8 +33,16 @@
     <form onsubmit="criarCurso(event)">
         <div class="formulario">
             <div class="row">
-                <input value="PADRÃO" placeholder="Nome do curso" type="text" name="nome">
-                <input type="number" min="1" placeholder="Duração" name="duracao">
+                <div class="input">
+                    <label>Nome do curso:</label>
+                    <input value="PADRÃO" placeholder="Nome do curso" type="text" name="nome">
+                    <span class="error"></span>
+                </div>
+                <div class="input">
+                    <label>Nome do curso:</label>
+                    <input type="number" min="1" placeholder="Duração" name="duracao">
+                    <span class="error"></span>
+                </div>
             </div>
 
             <select name="nivel">
@@ -42,7 +51,11 @@
                 <option value="2">Avançado</option>
                 <option value="3">Expert</option>
             </select>
-            <textarea placeholder="Descrição do curso" name="descricao"></textarea>
+            <div class="input">
+                <label>Nome do curso:</label>
+                <textarea placeholder="Descrição do curso" name="descricao"></textarea>
+                <span class="error"></span>
+            </div>
             <input name="index" type="hidden" value="-1">
 
         </div>

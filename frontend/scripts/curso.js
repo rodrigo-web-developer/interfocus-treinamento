@@ -6,9 +6,6 @@ function addCurso(evento) {
     var submit = evento.target
         .querySelector("button[type=submit]");
 
-
-    console.log(submit);
-
     var indice = Number(dados.get("index"));
     if (indice > -1) {
         var nodeTr = document

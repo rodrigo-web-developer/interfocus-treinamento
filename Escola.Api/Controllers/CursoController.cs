@@ -1,7 +1,6 @@
 ﻿using InterfocusConsole.Entidades;
 using InterfocusConsole.Services;
 using Microsoft.AspNetCore.Mvc;
-using NHibernate;
 using System.ComponentModel.DataAnnotations;
 
 namespace Escola.Api.Controllers
