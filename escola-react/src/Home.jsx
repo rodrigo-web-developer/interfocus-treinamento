@@ -5,12 +5,12 @@ export default function Home() {
         <h2>Cabeçalho secundário</h2>
         <h3>blas,vlajsdlkasdkj</h3>
 
-        <form method="get" action="cursos.html" onsubmit="enviarDados(event)">
+        <form method="get" action="cursos.html">
             <input required name="texto" placeholder="Digite o nome" type="text" /><br />
             <input required min="1" name="numero" placeholder="Digite o número" type="number" /><br />
             <button type="submit">CLIQUE AQUI</button>
             <button type="reset">Botão 2</button>
-            <button type="button" onclick="fazAlgumaCoisa()">Botão 3</button>
+            <button type="button">Botão 3</button>
         </form>
 
         <ul>
@@ -56,10 +56,10 @@ export default function Home() {
             </tbody>
         </table>
         <br />
-        <a class="crud" href="https://www.google.com" target="_blank">
+        <a className="crud" href="https://www.google.com" target="_blank">
             Clique aqui</a>
 
-        <a class="crud" href="./cursos.html">
+        <a className="crud" href="./cursos.html">
             CURSOS</a>
     </>)
 }

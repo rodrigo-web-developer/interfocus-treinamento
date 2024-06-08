@@ -1,9 +1,12 @@
+import { Link } from "simple-react-routing";
+
 function Navbar() {
     return (<nav>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/alunos">Alunos</a></li>
-            <li><a href="/alunos/criar">Novo aluno</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/alunos">Alunos</Link></li>
+            <li><Link to="/alunos/criar">Novo aluno</Link></li>
+            <li><input type="search"></input></li>
         </ul>
     </nav>)
 };
