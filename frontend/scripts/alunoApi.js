@@ -16,17 +16,17 @@ function deletarAluno(id) {
     return response;
 }
 
-function postCurso(curso) {
+function postAluno(aluno) {
     // PROMISE
     var request = {
-        method: curso.id ? "PUT" : "POST",
+        method: aluno.id ? "PUT" : "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(curso)
+        body: JSON.stringify(aluno)
     }
     var response =
-        fetch(URL_API + "/api/curso",
+        fetch(URL_API + "/api/aluno",
             request)
     return response;
 }

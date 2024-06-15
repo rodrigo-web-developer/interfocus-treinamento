@@ -32,3 +32,4 @@ export function postAluno(aluno) {
             request)
     return response;
 }
+
