@@ -20,9 +20,7 @@ export default function ListaAlunos(properties) {
 
     return (<>
         <h1>Lista de alunos</h1>
-        <div className="row" style={{
-            padding: "8px 16px"
-        }}>
+        <div className="row">
             <input
                 type="search"
                 style={{ minWidth: 250 }}

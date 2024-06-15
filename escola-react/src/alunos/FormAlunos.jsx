@@ -1,6 +1,6 @@
 import { useNavigation, useRouter } from "simple-react-routing"
 import { postAluno, getByCodigo } from "../services/alunoApi";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 export default function FormAluno() {
     const { pathParams } = useRouter();
@@ -10,6 +10,28 @@ export default function FormAluno() {
     const { navigateTo } = useNavigation();
 
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [email, setEmail] = useReducer((old, value) => {
+        return value.toLowerCase().replaceAll(" ", "");
+    }, "");
+    // import re -> regular expression
+    // using System.Text.RegularExpressions -> Regex
+    const [cpf, setCpf] = useReducer((old, value) => {
+        var regex = /[0-9]+/g;
+        var digitos = value.replace(/[^0-9]+/g, "").substring(0, 11);
+
+        if (digitos.length <= 3) return digitos;
+        else if (digitos.length <= 6) {
+            return digitos.replace(/(\d{3})(\d+)/, "$1.$2");
+        }
+        else if (digitos.length <= 9) {
+            return digitos.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+        }   
+        else {
+            return digitos.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, "$1.$2.$3-$4");
+        }
+
+    }, "");
 
     const salvarAluno = async (evento) => {
         evento.preventDefault();
@@ -50,21 +72,32 @@ export default function FormAluno() {
                 <div className="row">
                     <div className="input">
                         <label>Nome:</label>
-                        <input placeholder="Nome do curso" type="text" name="nome" />
+                        <input defaultValue={aluno.nome} placeholder="Nome do curso" type="text" name="nome" />
                         <span className="error"></span>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input">
                         <label>Data nascimento:</label>
-                        <input placeholder="Nome do curso" type="date" name="dataNascimento" />
+                        <input defaultValue={aluno.dataNascimento?.substring(0, 10)} type="date" name="dataNascimento" />
                         <span className="error"></span>
                     </div>
                 </div>
                 <div className="row">
                     <div className="input">
                         <label>Email:</label>
-                        <input placeholder="Nome do curso" type="email" name="email" />
+                        <input value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="E-mail do aluno" type="email" name="email" />
+                        <span className="error"></span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="input">
+                        <label>CPF:</label>
+                        <input value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                            placeholder="CPF do aluno" type="text" name="cpf" />
                         <span className="error"></span>
                     </div>
                 </div>

@@ -63,7 +63,7 @@ namespace InterfocusConsole.Services
         public virtual List<Aluno> Listar()
         {
             using var sessao = session.OpenSession();
-            var Alunos = sessao.Query<Aluno>().ToList();
+            var Alunos = sessao.Query<Aluno>().OrderByDescending(c => c.Codigo).ToList();
             return Alunos;
         }
 

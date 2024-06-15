@@ -29,9 +29,8 @@ namespace Escola.Api.Controllers
         [HttpGet("{codigo}")]
         public IActionResult GetByCodigo(int codigo)
         {
-            // ternário
-            var alunos = alunoService.Retorna(codigo);
-            return Ok(alunos);
+            var aluno = alunoService.Retorna(codigo);
+            return Ok(aluno);
         }
 
         [HttpPost]
