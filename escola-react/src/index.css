@@ -325,6 +325,12 @@ nav li:hover {
   line-height: 150%;
 }
 
+.error {
+  color: red;
+  font-weight: 600;
+  white-space: pre;
+}
+
 /*
 SELECTOR {
   ATRIBUTO: VALOR;

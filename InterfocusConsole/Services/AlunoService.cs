@@ -67,6 +67,13 @@ namespace InterfocusConsole.Services
             return Alunos;
         }
 
+        public virtual Aluno Retorna(int codigo)
+        {
+            using var sessao = session.OpenSession();
+            var aluno = sessao.Get<Aluno>(codigo);
+            return aluno;
+        }
+
         public virtual List<Aluno> Listar(string busca)
         {
             using var sessao = session.OpenSession();

@@ -26,6 +26,14 @@ namespace Escola.Api.Controllers
             return Ok(alunos);
         }
 
+        [HttpGet("{codigo}")]
+        public IActionResult GetByCodigo(int codigo)
+        {
+            // ternário
+            var alunos = alunoService.Retorna(codigo);
+            return Ok(alunos);
+        }
+
         [HttpPost]
         public IActionResult Criar([FromBody] Aluno aluno)
         {
