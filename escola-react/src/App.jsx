@@ -54,7 +54,7 @@ function App() {
         component: <FormAluno></FormAluno>
       }
     ]}>
-      <button onClick={() => setCount(Math.min(5, count + 1))}>
+      <button type="button" onClick={() => setCount(Math.min(5, count + 1))}>
         count is {count}
       </button>
       <Layout></Layout>

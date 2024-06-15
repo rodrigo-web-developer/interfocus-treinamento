@@ -62,6 +62,7 @@ Treinamento para estágio INTERFOCUS
 - Criando componente para telas
 - Adicionando biblioteca de roteamento
 - Entendendo hooks: useState e useEffect
+- Entendendo import e export
 
 ## APRIMORANDO REACTJS: 15/06
 

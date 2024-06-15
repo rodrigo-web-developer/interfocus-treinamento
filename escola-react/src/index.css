@@ -107,6 +107,8 @@ button:active {
 
 input[type=text],
 input[type=search],
+input[type=email],
+input[type=date],
 input[type=number],
 input[type=password],
 textarea {
@@ -184,6 +186,7 @@ div.row {
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
   gap: 16px;
 }
 
@@ -233,11 +236,15 @@ nav li {
   text-decoration: none;
   min-width: 80px;
   padding: 8px 16px;
+  align-items: center;
+  text-align: center;
 }
 
 nav a {
   text-decoration: none;
   color: inherit;
+  width: 100%;
+  display: block;
 }
 
 nav li:hover {
@@ -262,6 +269,7 @@ nav li:hover {
 .acoes {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .dialog {
@@ -303,7 +311,11 @@ nav li:hover {
   max-width: 240px;
   padding: 8px;
   height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 .grid ul {
   list-style: none;
