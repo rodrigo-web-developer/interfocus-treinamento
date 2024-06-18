@@ -65,7 +65,13 @@ Treinamento para estágio INTERFOCUS
 - Entendendo import e export
 
 ## APRIMORANDO REACTJS: 15/06
-
+- Criando componente para cadastro/edição
+- Renderização condicional no componente
+- Buscando dados para preencher componente
+- Hook useReducer
+- Criando componente modal e abrindo ele condicionalmente
+- Mais exemplos práticos
 
 ## FINALIZAÇÃO: 22/06
+
 
