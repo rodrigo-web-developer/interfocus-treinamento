@@ -56,6 +56,11 @@ function AlunoItem(p) {
             <li>Nome: {aluno.nome}</li>
             <li>Data de Nascimento: {dia}/{mes}/{ano}</li>
             <li>E-mail: {aluno.email}</li>
+            <li>Cursos: {aluno.inscricoes.length}
+                <ul className="with-dots">
+                    {aluno.inscricoes.map(insc => <li>{insc.curso.nome}</li>)}
+                </ul>
+            </li>
         </ul>
         <div className="acoes">
             <Link to={"/alunos/editar/" + aluno.codigo}>Editar</Link>

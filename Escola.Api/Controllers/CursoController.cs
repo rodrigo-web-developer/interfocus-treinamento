@@ -52,5 +52,12 @@ namespace Escola.Api.Controllers
             var valido = service.Excluir(cursoId, out List<ValidationResult> erros);
             return valido ? Ok(valido) : UnprocessableEntity(erros);
         }
+
+        [HttpGet("[action]")]
+        public IActionResult Relatorio()
+        {
+            var cursos = service.ConsultaAlunosPorNivel();
+            return Ok(cursos);
+        }
     }
 }

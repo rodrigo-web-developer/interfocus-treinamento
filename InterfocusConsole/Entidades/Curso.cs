@@ -20,6 +20,23 @@ namespace InterfocusConsole.Entidades
         }
     }
 
+    public class CursoDto
+    {
+        public CursoDto(Curso x)
+        {
+
+            Id = x.Id;
+            Descricao = x.Descricao;
+            Duracao = x.Duracao;
+            Nome = x.Nome;
+        }
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public string Nivel { get; set; }
+        public int Duracao { get; set; }
+    }
+
     public enum NivelCurso
     {
         Iniciante = 0,

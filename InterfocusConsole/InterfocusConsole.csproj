@@ -11,6 +11,7 @@
     <None Remove="hibernate.cfg.xml" />
     <None Remove="Mappings\Aluno.hbm.xml" />
     <None Remove="Mappings\Curso.hbm.xml" />
+    <None Remove="Mappings\Inscricao.hbm.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Aluno.hbm.xml" />
     <EmbeddedResource Include="Mappings\Curso.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Inscricao.hbm.xml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -26,7 +26,7 @@ export default function FormAluno() {
         }
         else if (digitos.length <= 9) {
             return digitos.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
-        }   
+        }
         else {
             return digitos.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, "$1.$2.$3-$4");
         }
@@ -61,7 +61,7 @@ export default function FormAluno() {
                 .then(result => setAluno(result));
         }
         else {
-            setAluno({})
+            setAluno({ inscricoes: [] })
         }
     }, []);
 
@@ -103,6 +103,10 @@ export default function FormAluno() {
                 </div>
             </div>
             <button type="submit">Salvar</button>
+            <ul className="with-dots">
+
+                {aluno.inscricoes.map(insc => <li>{insc.curso.nome}</li>)}
+            </ul>
             <p className="error">{errorMessage}</p>
         </form>
     </>

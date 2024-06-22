@@ -22,6 +22,10 @@ namespace InterfocusConsole.Entidades
             set => email = value?.ToLower();
         }
 
+
+        //public IList<Inscricao> Inscricoes { get; set; }
+
+
         public virtual void PrintDados()
         {
             Console.WriteLine(

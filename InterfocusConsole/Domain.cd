@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InterfocusConsole.Entidades.Aluno">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAAAAAgAAAAAAAAAAIAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Entidades\Aluno.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfocusConsole.Entidades.Bolsista" Collapsed="true">
+    <Position X="1.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAEAA=</HashCode>
+      <FileName>Entidades\Aluno.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfocusConsole.Entidades.Curso">
+    <Position X="8.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAABAAAAAAAAAAAAAAAAQAAAIAAAAAEAAAA=</HashCode>
+      <FileName>Entidades\Curso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfocusConsole.Entidades.Inscricao">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAABAAA=</HashCode>
+      <FileName>Entidades\Inscricao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Aluno" />
+      <Property Name="Curso" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="InterfocusConsole.Entidades.NivelCurso" Collapsed="true">
+    <Position X="4.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAACAAAAAAAAAADAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Curso.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

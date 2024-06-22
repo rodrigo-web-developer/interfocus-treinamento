@@ -12,6 +12,11 @@
 		<property	name="Nome"				type="string"	length="50"		/>
 		<property	name="Email"			type="string"	length="50"		/>
 		<property	name="DataNascimento"	type="Date"			/>
+
+		<!--<bag name="Inscricoes" lazy="false" generic="true" cascade="none">
+			<key column="alunocodigo"></key>
+			<one-to-many class="Inscricao"></one-to-many>
+		</bag>-->
 		
 	</class>
 

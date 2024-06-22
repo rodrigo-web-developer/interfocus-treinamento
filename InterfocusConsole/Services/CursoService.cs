@@ -1,4 +1,5 @@
-﻿using InterfocusConsole.Entidades;
+﻿using InterfocusConsole.Dtos;
+using InterfocusConsole.Entidades;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -100,6 +101,31 @@ namespace InterfocusConsole.Services
                             c.Descricao.Contains(busca))
                 .OrderBy(c => c.Id)
                 .Take(4)
+                .ToList();
+            return cursos;
+        }
+
+        //public virtual List<Curso> ListarDto()
+        //{
+        //    using var sessao = session.OpenSession();
+        //    var cursos = sessao.Query<Curso>()
+        //        .Select(x => new CursoDto(x))
+        //        .OrderBy(c => c.Id)
+        //        .Take(4)
+        //        .ToList();
+        //    return cursos;
+        //}
+
+        public List<RelatorioCursoDto> ConsultaAlunosPorNivel()
+        {
+            using var sessao = session.OpenSession();
+            var cursos = sessao.Query<Inscricao>()
+                .GroupBy(x => x.Curso.Nivel)
+                .Select(x => new RelatorioCursoDto
+                {
+                    Nivel = x.Key,
+                    Total = x.Count()
+                })
                 .ToList();
             return cursos;
         }

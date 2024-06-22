@@ -318,7 +318,7 @@ nav li:hover {
   border-radius: 16px;
   max-width: 240px;
   padding: 8px;
-  height: 240px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -361,6 +361,9 @@ nav li:hover {
   justify-content: space-between;
 }
 
+ul.with-dots {
+  list-style-type: disc;
+}
 
 /*
 SELECTOR {

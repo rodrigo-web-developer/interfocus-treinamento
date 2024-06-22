@@ -15,6 +15,13 @@ builder.Services.AddSingleton<ISessionFactory>((s) =>
     return config.BuildSessionFactory();
 });
 
+builder.Services.AddMvcCore().AddJsonOptions(
+    x =>
+    {
+        x.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    }    
+);
+
 if (true)
 {
     // configura SQL SERVER
@@ -43,7 +50,6 @@ app.UseCors();
 app.UseAuthorization();
 
 app.UseDeveloperExceptionPage();
-
 app.MapControllers();
 
 app.Run();

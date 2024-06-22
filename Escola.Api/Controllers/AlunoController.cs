@@ -1,4 +1,5 @@
-﻿using InterfocusConsole.Entidades;
+﻿using InterfocusConsole.Dtos;
+using InterfocusConsole.Entidades;
 using InterfocusConsole.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -92,6 +93,25 @@ namespace Escola.Api.Controllers
             {
                 return Ok(aluno);
             }
+        }
+
+        [HttpGet("[action]")]
+        public IActionResult Inscricoes()
+        {
+            // ternário
+            var insc = alunoService.ListarInscricoes();
+            return Ok(insc);
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Inscrever([FromBody] InscricaoDto dados)
+        {
+            var ins = new Inscricao
+            {
+                Aluno = new Aluno { Codigo = dados.AlunoCodigo },
+                Curso = new Curso {  Id = dados.CursoId },
+            };
+            return Ok();
         }
     }
 }

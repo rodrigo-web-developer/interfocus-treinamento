@@ -14,26 +14,27 @@ namespace InterfocusConsole.Services
             this.session = session;
         }
 
-        public bool Criar(Aluno Aluno, out List<ValidationResult> erros)
+        public bool Criar(Aluno aluno, out List<ValidationResult> erros)
         {
-            if (Validacao(Aluno, out erros))
+            if (Validacao(aluno, out erros))
             {
                 using var sessao = session.OpenSession();
                 using var transaction = sessao.BeginTransaction();
-                sessao.Save(Aluno);
+                sessao.Save(aluno);
                 transaction.Commit();
                 return true;
             }
             return false;
         }
 
-        public bool Editar(Aluno Aluno, out List<ValidationResult> erros)
+        public bool Editar(Aluno aluno, out List<ValidationResult> erros)
         {
-            if (Validacao(Aluno, out erros))
+            if (Validacao(aluno, out erros))
             {
                 using var sessao = session.OpenSession();
                 using var transaction = sessao.BeginTransaction();
-                sessao.Merge(Aluno);
+                
+                sessao.Merge(aluno);
                 transaction.Commit();
                 return true;
             }
@@ -63,8 +64,11 @@ namespace InterfocusConsole.Services
         public virtual List<Aluno> Listar()
         {
             using var sessao = session.OpenSession();
-            var Alunos = sessao.Query<Aluno>().OrderByDescending(c => c.Codigo).ToList();
-            return Alunos;
+            var alunos = sessao.Query<Aluno>()
+                .OrderByDescending(c => c.Codigo)
+                .ToList();
+
+            return alunos;
         }
 
         public virtual Aluno Retorna(int codigo)
@@ -84,6 +88,17 @@ namespace InterfocusConsole.Services
                 .ToList();
             return Alunos;
         }
+
+        public List<Inscricao> ListarInscricoes()
+        {
+            using var sessao = session.OpenSession();
+            var insc = sessao.Query<Inscricao>()
+                .OrderBy(c => c.Id)
+                .ToList();
+            return insc;
+        }
+
+        // DTO - DATA TRANSFER OBJECT
 
         /* ESTÁTICO */
 
