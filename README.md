@@ -73,5 +73,11 @@ Treinamento para estágio INTERFOCUS
 - Mais exemplos práticos
 
 ## FINALIZAÇÃO: 22/06
-
+- Subindo imagens para cadastro de perfil
+- Criando POST de form-data e lendo arquivo no backend
+- Entendendo armazenamento de arquivos e persitência
+- Entendendo formas de se recuperar arquivos
+- Bag/Many-to-one NHibernate mapping
+- Criando DTOs de entrada e saída
+- Entendendo geração de build de aplicações web (backend e frontend)
 
