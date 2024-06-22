@@ -38,3 +38,15 @@ export function postAluno(aluno) {
             request)
     return response;
 }
+
+export function uploadImagem(form, codigo) {
+    // PROMISE
+    var formData = new FormData(form);
+    var request = {
+        method: "POST",
+        body: formData
+    }
+
+    var response = fetch(URL_API + "/api/aluno/uploadimagem/" + codigo, request)
+    return response;
+}

@@ -317,10 +317,29 @@ nav li:hover {
   border-radius: 40px;
 }
 
-.card > div:has(img){
+.card > div.column{
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   display: flex;
+  position: relative;
+}
+
+.card > div.column > button {
+  display: none;
+  position: absolute;
+  top: 60px;
+}
+
+.column form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card > div:nth-child(1):hover > button {
+  display: block;
 }
 
 .card {

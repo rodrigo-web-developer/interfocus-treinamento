@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { listarAlunos } from "../services/alunoApi";
+import { listarAlunos, uploadImagem } from "../services/alunoApi";
 import { Link } from "simple-react-routing";
 
 export default function ListaAlunos(properties) {
@@ -50,11 +50,27 @@ function AlunoItem(p) {
     var mes = (data.getMonth() + 1).toString().padStart(2, '0');
     var ano = data.getFullYear();
     var [_, n, sn] = p.aluno.nome.match(/^\s*(\w).*\s(\w)/) || ["", p.aluno.nome[0], p.aluno.nome[1]];
-    var iniciais = [n, sn].join("").toUpperCase()
+    var iniciais = [n, sn].join("").toUpperCase();
+    const sendImagem = async (e) => {
+        e.preventDefault();
+        var res = await uploadImagem(e.target, p.aluno.codigo);
+        if (res.status == 200) {
+            var data = await res.json();
+            p.aluno.photoUrl = data.photoUrl;
+        }
+        setImagem(false);
+    }
+
+    const [imagem, setImagem] = useState(false);
 
     return (<div className="card">
-        <div>
+        <div class="column">
             <img src={p.aluno.photoUrl || "https://place-hold.it/80x80/909090&text=" + iniciais} width="80" height="80"></img>
+            {imagem && <form onSubmit={sendImagem}>
+                <input name="imagem" type="file" accept="image/*"></input>
+                <button type="submit">Salvar</button>
+            </form>}
+            <button type="button" onClick={() => setImagem(true)}>Editar</button>
         </div>
         <ul>
             <li>Código: {aluno.codigo}</li>

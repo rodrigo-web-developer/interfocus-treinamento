@@ -399,3 +399,4 @@ FodyWeavers.xsd
 
 node_modules/
 package-lock.json
+/Escola.Api/wwwroot/imagens
