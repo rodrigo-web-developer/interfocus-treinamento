@@ -313,6 +313,16 @@ nav li:hover {
   box-shadow: 5px 5px 8px #333333;
 }
 
+.card img {
+  border-radius: 40px;
+}
+
+.card > div:has(img){
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .card {
   border: 1px solid black;
   border-radius: 16px;

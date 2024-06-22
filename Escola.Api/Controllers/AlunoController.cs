@@ -11,10 +11,12 @@ namespace Escola.Api.Controllers
     public class AlunoController : ControllerBase
     {
         private readonly AlunoService alunoService;
+        private readonly IWebHostEnvironment env;
 
-        public AlunoController(AlunoService alunoService)
+        public AlunoController(AlunoService alunoService, IWebHostEnvironment env)
         {
             this.alunoService = alunoService;
+            this.env = env;
         }
 
         [HttpGet]
@@ -109,9 +111,43 @@ namespace Escola.Api.Controllers
             var ins = new Inscricao
             {
                 Aluno = new Aluno { Codigo = dados.AlunoCodigo },
-                Curso = new Curso {  Id = dados.CursoId },
+                Curso = new Curso { Id = dados.CursoId },
             };
             return Ok();
         }
+
+        [HttpPost("[action]/{codigo}")]
+        public IActionResult UploadImagem(int codigo)
+        {
+            var aluno = alunoService.Retorna(codigo);
+            if (aluno == null)
+            {
+                return NotFound();
+            }
+            var imagem = Request.Form.Files.FirstOrDefault();
+            if (imagem == null)
+            {
+                return BadRequest();
+            }
+
+            using var ms = new MemoryStream();
+            imagem.CopyTo(ms);
+            ms.Position = 0;
+            var nome = Guid.NewGuid().ToString() + ".png";
+
+            if (!Directory.Exists($"{env.WebRootPath}/imagens"))
+            {
+                Directory.CreateDirectory($"{env.WebRootPath}/imagens");
+            }
+            
+            System.IO.File.WriteAllBytes($"{env.WebRootPath}/imagens/{nome}", ms.ToArray());
+
+            aluno.PhotoUrl = $"https://localhost:7236/imagens/{nome}";
+
+            alunoService.Editar(aluno, out _);
+
+            return Ok(new { aluno.PhotoUrl });
+        }
+
     }
 }

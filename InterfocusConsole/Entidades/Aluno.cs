@@ -22,6 +22,7 @@ namespace InterfocusConsole.Entidades
             set => email = value?.ToLower();
         }
 
+        public string PhotoUrl { get; set; }
 
         //public IList<Inscricao> Inscricoes { get; set; }
 

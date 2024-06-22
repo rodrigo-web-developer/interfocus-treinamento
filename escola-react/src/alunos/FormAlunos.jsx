@@ -103,10 +103,6 @@ export default function FormAluno() {
                 </div>
             </div>
             <button type="submit">Salvar</button>
-            <ul className="with-dots">
-
-                {aluno.inscricoes.map(insc => <li>{insc.curso.nome}</li>)}
-            </ul>
             <p className="error">{errorMessage}</p>
         </form>
     </>
