@@ -1,10 +1,12 @@
-const URL_API = "https://localhost:7236";
+const URL_API = "http://172.16.102.202:5046";
 
-export function listarAlunos(pesquisa) {
+export function listarAlunos(pesquisa, page, pageSize) {
     // PROMISE
+    var data = page == 0 ? "" : `page=${page}&pageSize=${pageSize}`;
+
     var response = pesquisa ?
-        fetch(URL_API + "/api/aluno?pesquisa=" + pesquisa) :
-        fetch(URL_API + "/api/aluno");
+        fetch(URL_API + "/api/aluno?pesquisa=" + pesquisa + "&" + data) :
+        fetch(URL_API + "/api/aluno?" + data);
 
     return response;
 }

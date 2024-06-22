@@ -5,9 +5,10 @@ import { Link } from "simple-react-routing";
 export default function ListaAlunos(properties) {
     const [lista, setLista] = useState([]);
     const [busca, setBusca] = useState("");
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        listarAlunos(busca)
+        listarAlunos(busca, page, 8)
             .then(resposta => {
                 if (resposta.status == 200) {
                     resposta.json()
@@ -16,7 +17,7 @@ export default function ListaAlunos(properties) {
                         })
                 }
             });
-    }, [busca]);
+    }, [busca, page]);
 
     return (<>
         <h1>Lista de alunos</h1>
@@ -39,6 +40,11 @@ export default function ListaAlunos(properties) {
                         aluno={aluno}></AlunoItem>
                 }
             )}
+        </div>
+        <div className="row">
+            <button type="button" onClick={() => setPage(page - 1)}>Anterior</button>
+            <span>{page}</span>
+            <button type="button" onClick={() => setPage(page + 1)}>Próximo</button>
         </div>
     </>)
 }
@@ -64,7 +70,7 @@ function AlunoItem(p) {
     const [imagem, setImagem] = useState(false);
 
     return (<div className="card">
-        <div class="column">
+        <div className="column">
             <img src={p.aluno.photoUrl || "https://place-hold.it/80x80/909090&text=" + iniciais} width="80" height="80"></img>
             {imagem && <form onSubmit={sendImagem}>
                 <input name="imagem" type="file" accept="image/*"></input>

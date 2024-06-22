@@ -256,7 +256,7 @@ while (true)
             break;
         case 7:
             var buscaAluno = Input("Digite a busca: ");
-            foreach (var aluno in AlunoService.Listar(buscaAluno))
+            foreach (var aluno in AlunoService.ListarPage(buscaAluno))
             {
                 aluno.PrintDados();
             }

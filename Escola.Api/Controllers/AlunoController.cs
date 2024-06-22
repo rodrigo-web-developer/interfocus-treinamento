@@ -20,12 +20,12 @@ namespace Escola.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Listar(string pesquisa)
+        public IActionResult Listar(string pesquisa, int page = 0, int pageSize = 0)
         {
             // ternário
             var alunos = string.IsNullOrEmpty(pesquisa) ?
-                alunoService.Listar() :
-                alunoService.Listar(pesquisa);
+                alunoService.Listar(page, pageSize) :
+                alunoService.Listar(pesquisa, page, pageSize);
             return Ok(alunos);
         }
 
@@ -142,7 +142,7 @@ namespace Escola.Api.Controllers
             
             System.IO.File.WriteAllBytes($"{env.WebRootPath}/imagens/{nome}", ms.ToArray());
 
-            aluno.PhotoUrl = $"https://localhost:7236/imagens/{nome}";
+            aluno.PhotoUrl = $"http://172.16.102.202:5046/imagens/{nome}";
 
             alunoService.Editar(aluno, out _);
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Drawing.Printing;
 using InterfocusConsole.Entidades;
 using NHibernate;
 
@@ -33,7 +34,7 @@ namespace InterfocusConsole.Services
             {
                 using var sessao = session.OpenSession();
                 using var transaction = sessao.BeginTransaction();
-                
+
                 sessao.Merge(aluno);
                 transaction.Commit();
                 return true;
@@ -61,11 +62,16 @@ namespace InterfocusConsole.Services
             return Aluno;
         }
 
-        public virtual List<Aluno> Listar()
+        public virtual List<Aluno> Listar(int page, int pageSize)
         {
             using var sessao = session.OpenSession();
-            var alunos = sessao.Query<Aluno>()
+            var alunos = page == 0 ? sessao.Query<Aluno>()
                 .OrderByDescending(c => c.Codigo)
+                .ToList() :
+                sessao.Query<Aluno>()
+                .OrderByDescending(c => c.Codigo)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
             return alunos;
@@ -78,13 +84,15 @@ namespace InterfocusConsole.Services
             return aluno;
         }
 
-        public virtual List<Aluno> Listar(string busca)
+        public virtual List<Aluno> Listar(string busca, int page, int pageSize)
         {
             using var sessao = session.OpenSession();
             var Alunos = sessao.Query<Aluno>()
                 .Where(c => c.Nome.Contains(busca) ||
                             c.Email.Contains(busca))
                 .OrderBy(c => c.Codigo)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
             return Alunos;
         }
@@ -183,7 +191,7 @@ namespace InterfocusConsole.Services
         {
             return Alunos;
         }
-        public static List<Aluno> Listar(string buscaAluno,
+        public static List<Aluno> ListarPage(string buscaAluno,
             int skip = 0, int pageSize = 0)
         {
             var consulta = Alunos.Where(a =>

@@ -1,4 +1,4 @@
-const URL_API = "https://localhost:7236";
+const URL_API = "http://172.16.102.202:5046";
 
 export function listarCursos(pesquisa) {
     // PROMISE
